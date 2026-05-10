@@ -58,9 +58,7 @@ export async function POST(request) {
         ],
         "improvements": [
           { "title": "What to do", "advanced_drills": ["Drill 1", "Drill 2"] }
-        ],
-        "correct_motion_id": "One of: 'batting_stance', 'batting_swing', 'pitching_windup', 'pitching_stride', or 'default'",
-        "flawed_motion_id": "One of: 'batting_casting' (arms extend early), 'batting_late_swing', 'pitching_flying_open' (torso rotates early), or 'none' if perfect"
+        ]
       }
       Note: Severity is 1-10. Advanced drills should be specifically tailored to the severity (more foundational if high severity, more refining if low).
     `;

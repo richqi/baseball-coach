@@ -1,17 +1,6 @@
 'use client';
 
 import { AlertCircle, CheckCircle2, PlayCircle, ClipboardList, Target, TrendingUp } from 'lucide-react';
-import dynamic from 'next/dynamic';
-
-// Dynamically import the 3D viewer to avoid SSR issues with Three.js
-const MotionViewer3D = dynamic(() => import('./MotionViewer3D'), { 
-  ssr: false,
-  loading: () => (
-    <div className="viewer-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '400px' }}>
-      <p style={{ color: 'var(--text-secondary)' }}>Loading 3D Environments...</p>
-    </div>
-  )
-});
 
 export default function AnalysisDashboard({ videoUrl, analysis }) {
   if (!analysis) return null;
@@ -42,10 +31,10 @@ export default function AnalysisDashboard({ videoUrl, analysis }) {
           <div style={{ marginTop: '2rem', padding: '1rem', background: 'rgba(0, 240, 255, 0.05)', borderRadius: '8px', border: '1px solid rgba(0, 240, 255, 0.2)' }}>
             <h4 style={{ color: 'var(--primary)', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <Target size={18} />
-                Focus Areas
+                Coaching Focus
             </h4>
             <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-                Based on your {analysis.flawed_motion_id?.replace('_', ' ')}, the coach has prioritized the following drills.
+                Based on your movement patterns, the coach has prioritized the following corrective drills.
             </p>
           </div>
         </div>
@@ -114,16 +103,6 @@ export default function AnalysisDashboard({ videoUrl, analysis }) {
             ))}
           </div>
         </div>
-      </div>
-
-      {/* 3. Bottom Section: 3D Models */}
-      <div className="card glass-panel" style={{ padding: '1rem', overflow: 'hidden' }}>
-        <h3 className="card-title" style={{ borderBottom: 'none', paddingBottom: 0, marginBottom: '1rem' }}>
-           3D Motion Comparison (High-Fidelity)
-        </h3>
-        <MotionViewer3D 
-          correctMotionId={analysis.correct_motion_id || 'default'} 
-        />
       </div>
 
     </div>
