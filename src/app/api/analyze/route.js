@@ -53,10 +53,16 @@ export async function POST(request) {
       You must respond with a raw JSON object (do not wrap in markdown tags like \`\`\`json) with the following structure:
       {
         "summary": "A 1-2 sentence overview of the motion.",
-        "issues": ["Issue 1", "Issue 2"],
-        "improvements": ["Improvement 1", "Improvement 2"],
-        "motion_id": "One of these exact strings depending on the motion type and phase: 'batting_stance', 'batting_swing', 'pitching_windup', 'pitching_stride', or 'default'"
+        "issues": [
+          { "title": "Brief name of issue", "severity": 7 } 
+        ],
+        "improvements": [
+          { "title": "What to do", "advanced_drills": ["Drill 1", "Drill 2"] }
+        ],
+        "correct_motion_id": "One of: 'batting_stance', 'batting_swing', 'pitching_windup', 'pitching_stride', or 'default'",
+        "flawed_motion_id": "One of: 'batting_casting' (arms extend early), 'batting_late_swing', 'pitching_flying_open' (torso rotates early), or 'none' if perfect"
       }
+      Note: Severity is 1-10. Advanced drills should be specifically tailored to the severity (more foundational if high severity, more refining if low).
     `;
 
     // Generate content
