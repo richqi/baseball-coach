@@ -236,6 +236,16 @@ button {
   line-height: 1.5;
 }
 
+.drill-graphic {
+  width: 100%;
+  border-radius: var(--radius-sm);
+  margin-top: 1rem;
+  background: white;
+  padding: 0.5rem;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
 /* 3D Viewer Container */
 .viewer-container {
   width: 100%;

@@ -2,6 +2,25 @@
 
 import { AlertCircle, CheckCircle2, PlayCircle, ClipboardList, Target, TrendingUp } from 'lucide-react';
 
+const DRILL_GRAPHICS = {
+  'spray chart': '/images/drills/spray_chart.png',
+  'hitting zone': '/images/drills/spray_chart.png',
+  'fence drill': '/images/drills/fence_drill.png',
+  'towel drill': '/images/drills/towel_drill.png',
+  'pick-the-frosting': '/images/drills/drive_leg.png',
+  'drive leg': '/images/drills/drive_leg.png',
+  'rounding': '/images/drills/baserunning.png',
+  'first base': '/images/drills/baserunning.png',
+};
+
+const getDrillGraphic = (title, drills = []) => {
+  const content = (title + ' ' + drills.join(' ')).toLowerCase();
+  for (const [keyword, path] of Object.entries(DRILL_GRAPHICS)) {
+    if (content.includes(keyword)) return path;
+  }
+  return null;
+};
+
 export default function AnalysisDashboard({ videoUrl, analysis }) {
   if (!analysis) return null;
 
@@ -80,27 +99,38 @@ export default function AnalysisDashboard({ videoUrl, analysis }) {
             Tailored Drills
           </h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            {analysis.improvements && analysis.improvements.map((improvement, idx) => (
-              <div key={idx} style={{ padding: '0 0.5rem' }}>
-                <h4 style={{ color: 'var(--success)', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <CheckCircle2 size={18} />
-                    {improvement.title}
-                </h4>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                    {improvement.advanced_drills && improvement.advanced_drills.map((drill, didx) => (
-                        <div key={didx} style={{ 
-                            padding: '0.75rem', 
-                            background: 'rgba(255,255,255,0.03)', 
-                            borderRadius: '6px', 
-                            borderLeft: '3px solid var(--success)',
-                            fontSize: '0.9rem'
-                        }}>
-                            {drill}
-                        </div>
-                    ))}
+            {analysis.improvements && analysis.improvements.map((improvement, idx) => {
+              const graphicPath = getDrillGraphic(improvement.title, improvement.advanced_drills);
+              
+              return (
+                <div key={idx} style={{ padding: '0 0.5rem' }}>
+                  <h4 style={{ color: 'var(--success)', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                      <CheckCircle2 size={18} />
+                      {improvement.title}
+                  </h4>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                      {improvement.advanced_drills && improvement.advanced_drills.map((drill, didx) => (
+                          <div key={didx} style={{ 
+                              padding: '0.75rem', 
+                              background: 'rgba(255,255,255,0.03)', 
+                              borderRadius: '6px', 
+                              borderLeft: '3px solid var(--success)',
+                              fontSize: '0.9rem'
+                          }}>
+                              {drill}
+                          </div>
+                      ))}
+                  </div>
+                  {graphicPath && (
+                    <img 
+                      src={graphicPath} 
+                      alt={improvement.title} 
+                      className="drill-graphic"
+                    />
+                  )}
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>

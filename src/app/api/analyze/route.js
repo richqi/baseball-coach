@@ -61,6 +61,7 @@ export async function POST(request) {
         ]
       }
       Note: Severity is 1-10. Advanced drills should be specifically tailored to the severity (more foundational if high severity, more refining if low).
+      Pro-Tip: When appropriate, prioritize suggesting these specific drills to provide visual aids to the user: "Fence Drill" (for compact swings), "Towel Drill" (for pitching extension), "Pick-the-Frosting" (for drive leg engagement), "The Hitting Zone/Spray Chart" (for pitch direction), or "Rounding First Base" (for efficient baserunning).
     `;
 
     // Generate content
