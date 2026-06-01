@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import {
   AlertCircle, CheckCircle2, PlayCircle, ClipboardList,
@@ -98,6 +99,8 @@ const severityColor = (s) => {
 export default function AnalysisDashboard({ videoUrl, analysis }) {
   if (!analysis) return null;
 
+  const [activeBodyRegion, setActiveBodyRegion] = useState(null);
+
   const sortedIssues = [...(analysis.issues || [])].sort((a, b) => b.severity - a.severity);
 
   const motionId = analysis.motion_type === 'pitching' ? 'pitching_windup'
@@ -132,7 +135,11 @@ export default function AnalysisDashboard({ videoUrl, analysis }) {
             <PlayCircle size={20} color="var(--primary)" />
             Original Upload
           </h3>
-          <VideoPlayer src={videoUrl} />
+          <VideoPlayer
+            src={videoUrl}
+            analysis={analysis}
+            activeBodyRegion={activeBodyRegion}
+          />
         </div>
 
         <div className="card glass-panel">
@@ -206,7 +213,15 @@ export default function AnalysisDashboard({ videoUrl, analysis }) {
             {sortedIssues.map((issue, idx) => {
               const color = severityColor(issue.severity);
               return (
-                <div key={idx} className="feedback-item issue" style={{ flexDirection: 'column', alignItems: 'flex-start', padding: '1rem', gap: '0.5rem' }}>
+                <div
+                  key={idx}
+                  className={`feedback-item issue${activeBodyRegion === issue.body_region ? ' issue-card-selected' : ''}`}
+                  style={{ flexDirection: 'column', alignItems: 'flex-start', padding: '1rem', gap: '0.5rem', cursor: 'pointer' }}
+                  onClick={() => setActiveBodyRegion(r => r === issue.body_region ? null : issue.body_region)}
+                >
+                  {activeBodyRegion === issue.body_region && (
+                    <span className="issue-highlight-badge">● highlighting on video</span>
+                  )}
                   {/* Title + severity */}
                   <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'flex-start', gap: '0.5rem' }}>
                     <span style={{ fontWeight: 600, color: 'white', lineHeight: 1.3 }}>{issue.title}</span>
