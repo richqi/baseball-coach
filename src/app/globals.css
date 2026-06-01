@@ -516,12 +516,17 @@ button {
   background: rgba(255, 255, 255, 0.06);
   color: var(--text-secondary);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   padding: 3px 10px;
   font-size: 11px;
   cursor: pointer;
   font-family: inherit;
   transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.speed-btn:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
 .speed-btn.active {
