@@ -13,11 +13,11 @@ export default function AnalysisHistory({ history, onSelect }) {
       </h2>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1.5rem' }}>
         {history.map((entry) => (
-          <div 
-            key={entry.id} 
-            className="card glass-panel history-card" 
+          <div
+            key={entry.id}
+            className="card glass-panel history-card"
             onClick={() => onSelect(entry)}
-            style={{ cursor: 'pointer', transition: 'transform 0.2s ease, border-color 0.2s ease' }}
+            style={{ cursor: 'pointer', transition: 'transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease' }}
           >
             <div style={{ position: 'relative', height: '160px', borderRadius: '8px', overflow: 'hidden', marginBottom: '1rem' }}>
               <video 
@@ -49,13 +49,6 @@ export default function AnalysisHistory({ history, onSelect }) {
         ))}
       </div>
       
-      <style jsx>{`
-        .history-card:hover {
-          transform: translateY(-5px);
-          border-color: var(--primary);
-          box-shadow: 0 10px 30px rgba(0, 240, 255, 0.1);
-        }
-      `}</style>
     </div>
   );
 }

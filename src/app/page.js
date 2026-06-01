@@ -90,19 +90,18 @@ export default function Home() {
   return (
     <main className="app-container">
       <section className="hero-section">
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-          <div>
+        <div className="hero-header">
+          <div className="hero-content">
             <h1 className="hero-title">AI Baseball Coach</h1>
             <p className="hero-subtitle">
-              Upload your batting or pitching motion and let Gemini multimodal AI 
-              analyze your mechanics and provide professional-grade feedback.
+              Upload your batting or pitching clip and let Gemini multimodal AI
+              analyze your mechanics and deliver professional-grade coaching feedback.
             </p>
           </div>
           {!analyzing && history.length > 0 && (
-            <button 
-              className="btn-secondary" 
+            <button
+              className="btn-secondary"
               onClick={() => setShowHistory(!showHistory)}
-              style={{ padding: '0.5rem 1rem' }}
             >
               {showHistory ? 'Back to Upload' : `History (${history.length})`}
             </button>

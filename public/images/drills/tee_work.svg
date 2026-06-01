@@ -1,0 +1,52 @@
+<svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+  <rect width="400" height="280" fill="white"/>
+
+  <!-- Title -->
+  <text x="200" y="26" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">Tee Work — Contact Zones</text>
+  <text x="200" y="44" text-anchor="middle" font-size="11" fill="#64748B">Set tee to each zone and take 20–30 focused reps</text>
+
+  <!-- Strike zone box -->
+  <rect x="130" y="65" width="140" height="140" rx="4" fill="none" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="6,4"/>
+  <text x="200" y="58" text-anchor="middle" font-size="10" fill="#94A3B8">STRIKE ZONE</text>
+
+  <!-- Zone dividers -->
+  <line x1="130" y1="112" x2="270" y2="112" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="130" y1="158" x2="270" y2="158" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="177" y1="65" x2="177" y2="205" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="223" y1="65" x2="223" y2="205" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- Tee at middle-middle zone -->
+  <!-- Tee stem -->
+  <rect x="196" y="148" width="8" height="40" rx="3" fill="#64748B"/>
+  <!-- Tee base -->
+  <ellipse cx="200" cy="188" rx="22" ry="7" fill="#475569"/>
+  <!-- Ball -->
+  <circle cx="200" cy="140" r="14" fill="#F59E0B"/>
+  <!-- Ball seams -->
+  <path d="M 192,133 Q 196,140 192,147" stroke="white" stroke-width="1.5" fill="none"/>
+  <path d="M 208,133 Q 204,140 208,147" stroke="white" stroke-width="1.5" fill="none"/>
+
+  <!-- Zone labels -->
+  <text x="153" y="95" text-anchor="middle" font-size="9" fill="#64748B">IN</text>
+  <text x="200" y="95" text-anchor="middle" font-size="9" fill="#0066FF" font-weight="bold">MID</text>
+  <text x="247" y="95" text-anchor="middle" font-size="9" fill="#64748B">OUT</text>
+  <text x="118" y="95" text-anchor="middle" font-size="9" fill="#64748B">HIGH</text>
+  <text x="118" y="138" text-anchor="middle" font-size="9" fill="#0066FF" font-weight="bold">MID</text>
+  <text x="118" y="182" text-anchor="middle" font-size="9" fill="#64748B">LOW</text>
+
+  <!-- Current position indicator -->
+  <circle cx="200" cy="135" r="18" fill="none" stroke="#0066FF" stroke-width="2" stroke-dasharray="4,3" opacity="0.6"/>
+
+  <!-- Session tip boxes -->
+  <rect x="20" y="215" width="110" height="48" rx="6" fill="#EFF6FF" stroke="#0066FF" stroke-width="1.5"/>
+  <text x="75" y="233" text-anchor="middle" font-size="10" font-weight="bold" fill="#0066FF">One mechanic</text>
+  <text x="75" y="248" text-anchor="middle" font-size="10" fill="#0F172A">per session</text>
+
+  <rect x="145" y="215" width="110" height="48" rx="6" fill="#F0FDF4" stroke="#10B981" stroke-width="1.5"/>
+  <text x="200" y="233" text-anchor="middle" font-size="10" font-weight="bold" fill="#10B981">20–30 reps</text>
+  <text x="200" y="248" text-anchor="middle" font-size="10" fill="#0F172A">per zone</text>
+
+  <rect x="270" y="215" width="110" height="48" rx="6" fill="#FFF7ED" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="325" y="233" text-anchor="middle" font-size="10" font-weight="bold" fill="#F59E0B">Slow down</text>
+  <text x="325" y="248" text-anchor="middle" font-size="10" fill="#0F172A">stay deliberate</text>
+</svg>

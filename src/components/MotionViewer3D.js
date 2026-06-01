@@ -63,7 +63,12 @@ export default function MotionViewer3D({ correctMotionId }) {
         <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1.5} castShadow />
         <pointLight position={[-10, -10, -10]} intensity={1} />
         <directionalLight position={[0, 5, -5]} intensity={0.5} />
-        <React.Suspense fallback={null}>
+        <React.Suspense fallback={
+          <mesh>
+            <boxGeometry args={[0.5, 1.5, 0.3]} />
+            <meshStandardMaterial color="#1A2438" />
+          </mesh>
+        }>
           <HighFidelityModel motionId={correctMotionId} color="#10B981" />
           <ContactShadows position={[0, -1.5, 0]} opacity={0.4} scale={10} blur={2} far={4} />
         </React.Suspense>

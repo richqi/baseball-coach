@@ -1,0 +1,43 @@
+<svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+  <rect width="400" height="280" fill="white"/>
+
+  <!-- Title -->
+  <text x="200" y="26" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">Hip-to-Shoulder Separation</text>
+  <text x="200" y="44" text-anchor="middle" font-size="11" fill="#64748B">Top-down view — hips fire before shoulders open</text>
+
+  <!-- Body center spine dot -->
+  <circle cx="200" cy="160" r="7" fill="#0F172A"/>
+  <line x1="200" y1="100" x2="200" y2="220" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="5,4"/>
+
+  <!-- HIPS bar (rotated ~45°, further along rotation) -->
+  <line x1="162" y1="182" x2="238" y2="138" stroke="#0066FF" stroke-width="14" stroke-linecap="round"/>
+  <!-- Hip arrowhead -->
+  <polygon points="243,132 231,134 237,144" fill="#0066FF"/>
+  <text x="244" y="128" font-size="11" font-weight="bold" fill="#0066FF">HIPS</text>
+  <text x="244" y="142" font-size="10" fill="#0066FF">① rotate first</text>
+
+  <!-- SHOULDERS bar (rotated ~15°, lagging behind) -->
+  <line x1="165" y1="153" x2="235" y2="167" stroke="#475569" stroke-width="9" stroke-linecap="round" stroke-dasharray="none"/>
+  <!-- Shoulder arrowhead -->
+  <polygon points="240,168 229,161 231,172" fill="#475569"/>
+  <text x="108" y="168" font-size="11" font-weight="bold" fill="#475569">SHOULDERS</text>
+  <text x="108" y="182" font-size="10" fill="#475569">② follow after</text>
+
+  <!-- Angular gap arc indicator -->
+  <path d="M 215,150 A 20,20 0 0,0 207,170" stroke="#EF4444" stroke-width="2" fill="none" stroke-dasharray="none"/>
+  <text x="220" y="168" font-size="9" fill="#EF4444" font-weight="bold">gap</text>
+
+  <!-- Rotation arrows around center -->
+  <path d="M 240,200 Q 275,175 255,145" stroke="#0066FF" stroke-width="2" fill="none" opacity="0.5"/>
+  <polygon points="254,140 248,149 258,149" fill="#0066FF" opacity="0.5"/>
+
+  <!-- Foot positions -->
+  <ellipse cx="172" cy="215" rx="18" ry="8" fill="#94A3B8" opacity="0.4"/>
+  <ellipse cx="228" cy="215" rx="18" ry="8" fill="#94A3B8" opacity="0.4"/>
+  <text x="172" y="232" text-anchor="middle" font-size="9" fill="#94A3B8">back foot</text>
+  <text x="228" y="232" text-anchor="middle" font-size="9" fill="#94A3B8">front foot</text>
+
+  <!-- Divider + tip -->
+  <line x1="20" y1="248" x2="380" y2="248" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="200" y="265" text-anchor="middle" font-size="10" fill="#64748B">Key: create a half-beat delay — hips lead, shoulders follow</text>
+</svg>

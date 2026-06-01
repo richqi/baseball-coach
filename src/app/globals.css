@@ -305,3 +305,193 @@ button {
   color: var(--text-secondary);
   font-size: 0.9rem;
 }
+
+/* Secondary Button */
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+  padding: 0.75rem 2rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 1rem;
+  border: 1px solid var(--border);
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--primary);
+  transform: translateY(-1px);
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.badge-primary {
+  background: rgba(0, 240, 255, 0.1);
+  color: var(--primary);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+}
+
+.badge-success {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.badge-warning {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--warning);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.badge-accent {
+  background: rgba(0, 102, 255, 0.1);
+  color: #60A5FA;
+  border: 1px solid rgba(0, 102, 255, 0.3);
+}
+
+/* Metadata Tags */
+.region-tag {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 0.25rem;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  text-transform: capitalize;
+}
+
+.timestamp-tag {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 0.25rem;
+  background: rgba(0, 240, 255, 0.05);
+  color: var(--primary);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+}
+
+/* Severity Legend */
+.severity-legend {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding: 0.5rem 0;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Drill Descriptions */
+.drill-description {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin-top: 0.35rem;
+  font-style: italic;
+}
+
+/* Strengths */
+.strengths-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.strength-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.75rem;
+  background: rgba(16, 185, 129, 0.05);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+/* 3D Viewer Loading */
+.viewer-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 400px;
+  background: radial-gradient(circle at center, #1A2438 0%, #0A0F1C 100%);
+  border-radius: var(--radius-md);
+  gap: 1rem;
+}
+
+/* Hero layout */
+.hero-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.hero-content {
+  flex: 1;
+}
+
+@media (max-width: 600px) {
+  .hero-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .app-container {
+    padding: 1rem;
+  }
+}
+
+/* History card hover */
+.history-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary);
+  box-shadow: 0 10px 30px rgba(0, 240, 255, 0.1);
+}
+
+/* Motion viewer section */
+.motion-viewer-section {
+  margin-top: 2rem;
+}
+
+.motion-viewer-section h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.85rem;
+}

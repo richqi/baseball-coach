@@ -1,0 +1,57 @@
+<svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+  <rect width="400" height="280" fill="white"/>
+
+  <text x="200" y="26" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">Arm Path — Pitching Arm Circle</text>
+  <text x="200" y="44" text-anchor="middle" font-size="11" fill="#64748B">Correct loop: up → back → down → release</text>
+
+  <!-- Pitcher torso (side view, simplified) -->
+  <line x1="195" y1="128" x2="195" y2="190" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="195" cy="115" r="13" fill="none" stroke="#0F172A" stroke-width="2.5"/>
+  <!-- Glove arm forward -->
+  <line x1="195" y1="148" x2="150" y2="138" stroke="#475569" stroke-width="3.5" stroke-linecap="round"/>
+  <circle cx="143" cy="136" r="8" fill="#475569"/>
+  <!-- Legs -->
+  <line x1="195" y1="190" x2="175" y2="225" stroke="#0F172A" stroke-width="3.5" stroke-linecap="round"/>
+  <line x1="195" y1="190" x2="215" y2="225" stroke="#0F172A" stroke-width="3.5" stroke-linecap="round"/>
+
+  <!-- Shoulder pivot point -->
+  <circle cx="215" cy="148" r="5" fill="#0F172A"/>
+
+  <!-- CORRECT arm path (full smooth circle) -->
+  <!-- The big arc: goes up, back, down, forward to release -->
+  <path d="M 215,148 Q 270,90 300,120 Q 330,148 300,178 Q 265,205 230,185 Q 215,175 215,148"
+        stroke="#0066FF" stroke-width="3" fill="none"/>
+  <!-- Arrow at release point -->
+  <polygon points="218,143 210,155 222,152" fill="#0066FF"/>
+
+  <!-- Waypoint markers -->
+  <!-- 1: Up -->
+  <circle cx="295" cy="118" r="8" fill="#0066FF"/>
+  <text x="308" y="114" font-size="11" font-weight="bold" fill="#0066FF">①</text>
+  <text x="308" y="126" font-size="10" fill="#0F172A">Up</text>
+
+  <!-- 2: Back / max external rotation -->
+  <circle cx="328" cy="150" r="8" fill="#10B981"/>
+  <text x="342" y="147" font-size="11" font-weight="bold" fill="#10B981">②</text>
+  <text x="342" y="159" font-size="10" fill="#0F172A">Back</text>
+
+  <!-- 3: Down / acceleration -->
+  <circle cx="298" cy="180" r="8" fill="#F59E0B"/>
+  <text x="308" y="177" font-size="11" font-weight="bold" fill="#F59E0B">③</text>
+  <text x="308" y="189" font-size="10" fill="#0F172A">Down</text>
+
+  <!-- 4: Release -->
+  <circle cx="218" cy="145" r="8" fill="#EF4444"/>
+  <text x="222" y="128" font-size="11" font-weight="bold" fill="#EF4444">④</text>
+  <text x="222" y="117" font-size="10" fill="#EF4444">Release</text>
+
+  <!-- WRONG path indicator (short-arming) -->
+  <path d="M 215,148 Q 240,120 235,148" stroke="#EF4444" stroke-width="2" fill="none" stroke-dasharray="5,4" opacity="0.7"/>
+  <text x="50" y="110" font-size="10" fill="#EF4444" font-weight="bold">✕ Short-arm</text>
+  <text x="50" y="124" font-size="9" fill="#EF4444">(skips the loop)</text>
+  <line x1="110" y1="118" x2="238" y2="140" stroke="#EF4444" stroke-width="1" stroke-dasharray="3,3" opacity="0.6"/>
+
+  <!-- Tip -->
+  <line x1="20" y1="248" x2="380" y2="248" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="200" y="264" text-anchor="middle" font-size="10" fill="#64748B">Practice in a mirror in slow motion. Smooth loop = more velocity + less arm stress.</text>
+</svg>

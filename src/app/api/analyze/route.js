@@ -47,21 +47,44 @@ export async function POST(request) {
     console.log(`File processed successfully. URI: ${uploadResult.uri}`);
 
     const prompt = `
-      You are an expert, professional baseball coach. Analyze this video clip of a player (either batting or pitching).
-      Identify any mechanical flaws or issues, and provide actionable improvements.
-      
-      You must respond with a raw JSON object (do not wrap in markdown tags like \`\`\`json) with the following structure:
+      You are an expert professional baseball coach and biomechanics analyst. Analyze this video clip of a player (either batting or pitching).
+      Provide a thorough mechanical assessment: identify strengths, detect flaws, and prescribe specific corrective drills.
+
+      Respond with a raw JSON object (no markdown code fences) matching this exact structure:
       {
-        "summary": "A 1-2 sentence overview of the motion.",
+        "motion_type": "batting" or "pitching",
+        "player_level_estimate": "beginner", "intermediate", or "advanced",
+        "summary": "2-3 sentences covering what motion was performed, the player's general level, and the single most important takeaway.",
+        "strengths": [
+          { "title": "One thing the player does well" }
+        ],
         "issues": [
-          { "title": "Brief name of issue", "severity": 7 } 
+          {
+            "title": "Short name of the issue (3-6 words)",
+            "description": "2-3 sentences: what exactly is wrong, why it hurts performance, and what it looks like in the video.",
+            "severity": 7,
+            "body_region": "lower_body", "upper_body", "arm_path", or "follow_through",
+            "timestamp_hint": "approximate moment where the flaw is most visible, e.g. '0:01-0:03'"
+          }
         ],
         "improvements": [
-          { "title": "What to do", "advanced_drills": ["Drill 1", "Drill 2"] }
+          {
+            "title": "Corrective focus area (e.g. 'Improve Hip Drive')",
+            "fixes_issue": "Exact title of the issue this addresses",
+            "advanced_drills": ["Drill Name 1", "Drill Name 2"]
+          }
         ]
       }
-      Note: Severity is 1-10. Advanced drills should be specifically tailored to the severity (more foundational if high severity, more refining if low).
-      Pro-Tip: When appropriate, prioritize suggesting these specific drills to provide visual aids to the user: "Fence Drill" (for compact swings), "Towel Drill" (for pitching extension), "Pick-the-Frosting" (for drive leg engagement), "The Hitting Zone/Spray Chart" (for pitch direction), or "Rounding First Base" (for efficient baserunning).
+
+      Rules:
+      - Severity is 1-10: 8-10 = fix immediately, 5-7 = important to work on, 1-4 = fine-tuning.
+      - Return 2-4 strengths, 2-5 issues ordered by severity descending, and exactly one improvement per issue.
+      - Each improvement must name 1-2 specific drills.
+      - When relevant, prioritize these named drills which have visual aids in the app:
+        "Fence Drill" (compact swing path), "Towel Drill" (pitching arm extension),
+        "Pick-the-Frosting" (drive leg / back-hip engagement), "Hitting Zone/Spray Chart" (pitch location awareness),
+        "Rounding First Base" (efficient baserunning).
+      - For drills not in the above list, use real, well-known baseball coaching drill names.
     `;
 
     // Generate content
