@@ -496,10 +496,10 @@ button {
   font-size: 0.85rem;
 }
 
-/* Speed overlay — sits above native video controls */
+/* Speed overlay — pinned to top of video frame, clear of native controls */
 .speed-overlay {
   position: absolute;
-  bottom: 52px;
+  top: 0;
   left: 0;
   right: 0;
   background: rgba(0, 0, 0, 0.55);
@@ -509,7 +509,7 @@ button {
   align-items: center;
   gap: 6px;
   padding: 6px 12px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .speed-btn {
