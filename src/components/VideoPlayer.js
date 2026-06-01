@@ -10,17 +10,19 @@ export default function VideoPlayer({ src }) {
 
   useEffect(() => {
     setSpeed(1);
-    if (videoRef.current) {
-      videoRef.current.playbackRate = 1;
-    }
   }, [src]);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = speed;
+    }
+  }, [speed]);
 
   const handleSpeed = (s) => {
     setSpeed(s);
-    if (videoRef.current) {
-      videoRef.current.playbackRate = s;
-    }
   };
+
+  if (!src) return null;
 
   return (
     <div style={{ position: 'relative' }}>
