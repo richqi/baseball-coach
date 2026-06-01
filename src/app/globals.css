@@ -535,3 +535,17 @@ button {
   border-color: rgba(0, 240, 255, 0.5);
   font-weight: 700;
 }
+
+/* Selected issue card — full border replaces left-edge border */
+.issue-card-selected {
+  border: 1px solid var(--error) !important;
+  background: rgba(239, 68, 68, 0.06);
+}
+
+/* Small badge shown inside selected issue card */
+.issue-highlight-badge {
+  font-size: 0.65rem;
+  color: var(--error);
+  opacity: 0.85;
+  margin-top: 0.25rem;
+}
