@@ -6,6 +6,7 @@ import {
   Target, TrendingUp, Star, Zap, Activity, User, Clock, MapPin,
 } from 'lucide-react';
 import ErrorBoundary from './ErrorBoundary';
+import VideoPlayer from './VideoPlayer';
 
 const MotionViewer3D = dynamic(() => import('./MotionViewer3D'), {
   ssr: false,
@@ -131,7 +132,7 @@ export default function AnalysisDashboard({ videoUrl, analysis }) {
             <PlayCircle size={20} color="var(--primary)" />
             Original Upload
           </h3>
-          <video src={videoUrl} controls className="video-preview" />
+          <VideoPlayer src={videoUrl} />
         </div>
 
         <div className="card glass-panel">
