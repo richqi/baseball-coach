@@ -495,3 +495,38 @@ button {
   letter-spacing: 0.08em;
   font-size: 0.85rem;
 }
+
+/* Speed overlay — sits above native video controls */
+.speed-overlay {
+  position: absolute;
+  bottom: 52px;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.speed-btn {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  padding: 3px 10px;
+  font-size: 11px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.speed-btn.active {
+  background: rgba(0, 240, 255, 0.18);
+  color: var(--primary);
+  border-color: rgba(0, 240, 255, 0.5);
+  font-weight: 700;
+}
