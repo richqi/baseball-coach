@@ -128,44 +128,43 @@ export default function AnalysisDashboard({ videoUrl, analysis }) {
         </div>
       )}
 
-      {/* Row 1: Video + Summary */}
-      <div className="dashboard-grid" style={{ marginTop: 0 }}>
-        <div className="card glass-panel">
-          <h3 className="card-title">
-            <PlayCircle size={20} color="var(--primary)" />
-            Original Upload
-          </h3>
-          <VideoPlayer
-            src={videoUrl}
-            analysis={analysis}
-            activeBodyRegion={activeBodyRegion}
-          />
-        </div>
-
-        <div className="card glass-panel">
-          <h3 className="card-title">
-            <ClipboardList size={20} color="var(--accent)" />
-            Coach&apos;s Summary
-          </h3>
-          <p className="feedback-text" style={{ fontSize: '1.05rem', lineHeight: '1.65' }}>
-            {analysis.summary}
+      {/* Coach's Summary — full width above video */}
+      <div className="card glass-panel">
+        <h3 className="card-title">
+          <ClipboardList size={20} color="var(--accent)" />
+          Coach&apos;s Summary
+        </h3>
+        <p className="feedback-text" style={{ fontSize: '1.05rem', lineHeight: '1.65' }}>
+          {analysis.summary}
+        </p>
+        <div style={{
+          marginTop: 'auto',
+          padding: '0.75rem',
+          background: 'rgba(0, 240, 255, 0.04)',
+          borderRadius: '8px',
+          border: '1px solid rgba(0, 240, 255, 0.15)',
+        }}>
+          <h4 style={{ color: 'var(--primary)', marginBottom: '0.4rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.9rem' }}>
+            <Target size={16} />
+            Coaching Focus
+          </h4>
+          <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
+            The coach has prioritized corrective drills based on your movement patterns below.
           </p>
-          <div style={{
-            marginTop: 'auto',
-            padding: '0.75rem',
-            background: 'rgba(0, 240, 255, 0.04)',
-            borderRadius: '8px',
-            border: '1px solid rgba(0, 240, 255, 0.15)',
-          }}>
-            <h4 style={{ color: 'var(--primary)', marginBottom: '0.4rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.9rem' }}>
-              <Target size={16} />
-              Coaching Focus
-            </h4>
-            <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
-              The coach has prioritized corrective drills based on your movement patterns below.
-            </p>
-          </div>
         </div>
+      </div>
+
+      {/* Video — full width */}
+      <div className="card glass-panel">
+        <h3 className="card-title">
+          <PlayCircle size={20} color="var(--primary)" />
+          Original Upload
+        </h3>
+        <VideoPlayer
+          src={videoUrl}
+          analysis={analysis}
+          activeBodyRegion={activeBodyRegion}
+        />
       </div>
 
       {/* Strengths */}
