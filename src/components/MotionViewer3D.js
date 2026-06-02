@@ -3,8 +3,8 @@
 // Paste YouTube video IDs here once you have them.
 // For a URL like https://www.youtube.com/watch?v=ABC123xyz the ID is "ABC123xyz"
 const REFERENCE_VIDEOS = {
-  batting:  '',  // slow-motion pro batting swing
-  pitching: '',  // slow-motion pro pitching mechanics
+  batting:  'Hhb6J9vG0gQ',  // slow-motion pro batting swing - Shohei Ohtani's: iXAu8M_hLVo
+  pitching: 'jOrC3tmuknE',  // slow-motion pro pitching mechanics
 };
 
 export default function MotionViewer3D({ correctMotionId }) {
