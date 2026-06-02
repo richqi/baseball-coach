@@ -43,3 +43,5 @@ next-env.d.ts
 # local dev
 dev-server.log
 .superpowers/
+.playwright-mcp/
+.claude/
