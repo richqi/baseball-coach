@@ -83,7 +83,8 @@ export default function VideoPlayer({ src, analysis, activeBodyRegion }) {
   // Sync activeBodyRegion prop into a ref for the RAF loop, and redraw if paused
   useEffect(() => {
     activeBodyRegionRef.current = activeBodyRegion;
-    if (poseActive && videoRef.current?.paused && poseLandmarkerRef.current && canvasRef.current) {
+    if (poseActive && videoRef.current?.paused && poseLandmarkerRef.current && canvasRef.current
+        && videoRef.current.videoWidth > 0) {
       const results = poseLandmarkerRef.current.detectForVideo(videoRef.current, performance.now());
       drawSkeleton(canvasRef.current, results, activeBodyRegion);
     }
@@ -135,6 +136,7 @@ export default function VideoPlayer({ src, analysis, activeBodyRegion }) {
     const loop = () => {
       if (!videoRef.current || !canvasRef.current || !poseLandmarkerRef.current) return;
       if (videoRef.current.paused || videoRef.current.ended) return;
+      if (videoRef.current.videoWidth === 0) { rafRef.current = requestAnimationFrame(loop); return; }
       const results = poseLandmarkerRef.current.detectForVideo(
         videoRef.current, performance.now()
       );
@@ -168,6 +170,7 @@ export default function VideoPlayer({ src, analysis, activeBodyRegion }) {
     video.currentTime = Math.max(0, video.currentTime + direction * (1 / 30));
     video.addEventListener('seeked', () => {
       if (!poseActive || !poseLandmarkerRef.current || !canvasRef.current) return;
+      if (video.videoWidth === 0) return;
       const results = poseLandmarkerRef.current.detectForVideo(video, performance.now());
       drawSkeleton(canvasRef.current, results, activeBodyRegionRef.current);
     }, { once: true });
