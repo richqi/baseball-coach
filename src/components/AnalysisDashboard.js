@@ -97,9 +97,9 @@ const severityColor = (s) => {
 };
 
 export default function AnalysisDashboard({ videoUrl, analysis }) {
-  if (!analysis) return null;
-
   const [activeBodyRegion, setActiveBodyRegion] = useState(null);
+
+  if (!analysis) return null;
 
   const sortedIssues = [...(analysis.issues || [])].sort((a, b) => b.severity - a.severity);
 
