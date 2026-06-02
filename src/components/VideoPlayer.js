@@ -4,7 +4,7 @@ import { useRef, useState, useEffect } from 'react';
 
 const SPEEDS = [0.25, 0.5, 1];
 
-export default function VideoPlayer({ src }) {
+export default function VideoPlayer({ src, analysis, activeBodyRegion }) {
   const videoRef = useRef(null);
   const [speed, setSpeed] = useState(1);
 
@@ -18,8 +18,13 @@ export default function VideoPlayer({ src }) {
     }
   }, [speed]);
 
-  const handleSpeed = (s) => {
-    setSpeed(s);
+  const handleSpeed = (s) => setSpeed(s);
+
+  const stepFrame = (direction) => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.pause();
+    video.currentTime = Math.max(0, video.currentTime + direction * (1 / 30));
   };
 
   if (!src) return null;
@@ -40,6 +45,12 @@ export default function VideoPlayer({ src }) {
             {s}×
           </button>
         ))}
+        {analysis && (
+          <div style={{ marginLeft: 'auto', display: 'flex', gap: '4px', alignItems: 'center' }}>
+            <button className="speed-btn" onClick={() => stepFrame(-1)}>←</button>
+            <button className="speed-btn" onClick={() => stepFrame(1)}>→</button>
+          </div>
+        )}
       </div>
     </div>
   );
