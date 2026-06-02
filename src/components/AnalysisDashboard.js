@@ -1,23 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import dynamic from 'next/dynamic';
 import {
   AlertCircle, CheckCircle2, PlayCircle, ClipboardList,
   Target, TrendingUp, Star, Zap, Activity, User, Clock, MapPin,
 } from 'lucide-react';
-import ErrorBoundary from './ErrorBoundary';
 import VideoPlayer from './VideoPlayer';
-
-const MotionViewer3D = dynamic(() => import('./MotionViewer3D'), {
-  ssr: false,
-  loading: () => (
-    <div className="viewer-loading">
-      <div className="spinner" />
-      <p className="loading-subtext">Loading 3D reference model...</p>
-    </div>
-  ),
-});
+import MotionViewer3D from './MotionViewer3D';
 
 // Maps keyword substrings → drill graphic paths
 const DRILL_GRAPHICS = {
@@ -336,16 +325,14 @@ export default function AnalysisDashboard({ videoUrl, analysis }) {
         </div>
       </div>
 
-      {/* 3D Reference Motion Viewer */}
+      {/* Reference Motion Video */}
       {motionId && (
         <div className="motion-viewer-section">
           <h3>
             <Activity size={14} />
             Pro Reference Motion ({analysis.motion_type})
           </h3>
-          <ErrorBoundary fallback={null}>
-            <MotionViewer3D correctMotionId={motionId} />
-          </ErrorBoundary>
+          <MotionViewer3D correctMotionId={motionId} />
         </div>
       )}
 
