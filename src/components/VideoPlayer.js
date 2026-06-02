@@ -7,8 +7,10 @@ const SPEEDS = [0.25, 0.5, 1];
 export default function VideoPlayer({ src, analysis, activeBodyRegion }) {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
+  const poseLandmarkerRef = useRef(null);
   const [speed, setSpeed] = useState(1);
   const [poseActive, setPoseActive] = useState(false);
+  const [poseLoading, setPoseLoading] = useState(false);
 
   useEffect(() => {
     setSpeed(1);
@@ -21,7 +23,6 @@ export default function VideoPlayer({ src, analysis, activeBodyRegion }) {
     }
   }, [speed]);
 
-  // Keep canvas dimensions in sync with video element size
   useEffect(() => {
     const video = videoRef.current;
     const canvas = canvasRef.current;
@@ -33,6 +34,27 @@ export default function VideoPlayer({ src, analysis, activeBodyRegion }) {
     observer.observe(video);
     return () => observer.disconnect();
   }, [analysis]);
+
+  // Lazy-load MediaPipe on first pose activation
+  useEffect(() => {
+    if (!poseActive || poseLandmarkerRef.current) return;
+    setPoseLoading(true);
+    (async () => {
+      const { PoseLandmarker, FilesetResolver } = await import('@mediapipe/tasks-vision');
+      const vision = await FilesetResolver.forVisionTasks(
+        'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision/wasm'
+      );
+      poseLandmarkerRef.current = await PoseLandmarker.createFromOptions(vision, {
+        baseOptions: {
+          modelAssetPath: 'https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_lite/float16/1/pose_landmarker_lite.task',
+          delegate: 'GPU',
+        },
+        runningMode: 'VIDEO',
+        numPoses: 1,
+      });
+      setPoseLoading(false);
+    })();
+  }, [poseActive]);
 
   const handleSpeed = (s) => setSpeed(s);
 
@@ -81,8 +103,10 @@ export default function VideoPlayer({ src, analysis, activeBodyRegion }) {
             <button
               className={`speed-btn${poseActive ? ' active' : ''}`}
               onClick={() => setPoseActive(a => !a)}
+              disabled={poseLoading}
+              style={{ opacity: poseLoading ? 0.6 : 1 }}
             >
-              ⬡ Pose
+              {poseLoading ? '…' : '⬡ Pose'}
             </button>
           </div>
         )}
