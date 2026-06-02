@@ -38,22 +38,31 @@ export default function VideoPlayer({ src, analysis, activeBodyRegion }) {
   // Lazy-load MediaPipe on first pose activation
   useEffect(() => {
     if (!poseActive || poseLandmarkerRef.current) return;
+    let cancelled = false;
     setPoseLoading(true);
     (async () => {
-      const { PoseLandmarker, FilesetResolver } = await import('@mediapipe/tasks-vision');
-      const vision = await FilesetResolver.forVisionTasks(
-        'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision/wasm'
-      );
-      poseLandmarkerRef.current = await PoseLandmarker.createFromOptions(vision, {
-        baseOptions: {
-          modelAssetPath: 'https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_lite/float16/1/pose_landmarker_lite.task',
-          delegate: 'GPU',
-        },
-        runningMode: 'VIDEO',
-        numPoses: 1,
-      });
-      setPoseLoading(false);
+      try {
+        const { PoseLandmarker, FilesetResolver } = await import('@mediapipe/tasks-vision');
+        const vision = await FilesetResolver.forVisionTasks(
+          'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision/wasm'
+        );
+        if (cancelled) return;
+        poseLandmarkerRef.current = await PoseLandmarker.createFromOptions(vision, {
+          baseOptions: {
+            modelAssetPath: 'https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_lite/float16/1/pose_landmarker_lite.task',
+            delegate: 'GPU',
+          },
+          runningMode: 'VIDEO',
+          numPoses: 1,
+        });
+      } catch (err) {
+        console.error('MediaPipe load failed:', err);
+        if (!cancelled) setPoseActive(false);
+      } finally {
+        if (!cancelled) setPoseLoading(false);
+      }
     })();
+    return () => { cancelled = true; };
   }, [poseActive]);
 
   const handleSpeed = (s) => setSpeed(s);
